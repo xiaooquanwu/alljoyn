@@ -945,7 +945,7 @@ void SLAPStream::AlarmTriggered(const Alarm& alarm, QStatus reason)
              * for the new packet to overwrite the older packet. It would NOT be OK for
              * the unreliable packet to get queued twice.
              */
-            if (m_txQueue.front() == m_txCtrl) {
+            if (!m_txQueue.empty() && (m_txQueue.front() == m_txCtrl)) {
                 QCC_DbgPrintf(("Unreliable packet already queued"));
             } else {
                 m_txQueue.push_front(m_txCtrl);
