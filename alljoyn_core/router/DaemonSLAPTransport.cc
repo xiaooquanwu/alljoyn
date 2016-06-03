@@ -405,6 +405,24 @@ DaemonSLAPTransport::~DaemonSLAPTransport()
     Join();
 }
 
+/**
+ * This is a convenience function that tells a caller whether or not this
+ * transport will support a set of options for a connection.  Lets the caller
+ * decide up front whether or not a connection will succeed due to options
+ * conflicts.
+ */
+bool DaemonSLAPTransport::SupportsOptions(const SessionOpts& opts) const
+{
+    QCC_DbgTrace(("DaemonSLAPTransport::SupportsOptions()"));
+    bool rc = true;
+
+    /* TODO: shouldn't we check something? */
+    QCC_UNUSED(opts);
+
+    QCC_DbgPrintf(("TCPTransport::SupportsOptions(): returns \"%s\"", rc == true ? "true" : "false"));
+    return rc;
+}
+
 QStatus DaemonSLAPTransport::Start()
 {
     stopping = false;

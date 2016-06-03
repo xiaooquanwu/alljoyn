@@ -73,6 +73,17 @@ class DaemonSLAPTransport : public Transport, public _RemoteEndpoint::EndpointLi
     ~DaemonSLAPTransport();
 
     /**
+     * Does this transport support connections as described by the provided
+     * Session options.
+     *
+     * @param opts  Proposed session options.
+     * @return
+     *      - true if the SessionOpts specifies a supported option set.
+     *      - false otherwise.
+     */
+    bool SupportsOptions(const SessionOpts& opts) const;
+
+    /**
      * Start the transport and associate it with the router.
      *
      * @return ER_OK if successful.

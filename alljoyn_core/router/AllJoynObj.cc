@@ -414,8 +414,8 @@ void AllJoynObj::BindSessionPort(const InterfaceDescription::Member* member, Mes
             }
         }
         if (supports == false) {
-            QCC_LogError(status, ("Fall to !SupportsOptions"));
-            //dea:DEBUG!!!!! replyCode = ALLJOYN_BINDSESSIONPORT_REPLY_INVALID_OPTS;
+            QCC_LogError(status, ("Not found suitable transport!"));
+            replyCode = ALLJOYN_BINDSESSIONPORT_REPLY_INVALID_OPTS;
         }
     }
 
